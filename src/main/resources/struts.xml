@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">  
+  
+<struts>  
+    
+    <constant name="struts.i18n.reload" value="true" />  
+    <!-- "true"为开发模式 -->
+    <constant name="struts.devMode" value="true" />  
+     
+    <package name="default" namespace="/" extends="struts-default" >  
+    
+        <!-- 注册（定义）拦截器    (要使用还需要调用action)-->
+        <interceptors>
+           <interceptor name="SDKInterceptor"  class="com.cn.bonc.common.EPMStrutsInterceptor"></interceptor>
+           
+           <interceptor-stack name="HelloInterceptor">
+             <interceptor-ref name="defaultStack"></interceptor-ref>
+             <interceptor-ref name="SDKInterceptor"></interceptor-ref>
+           </interceptor-stack>
+           
+        </interceptors>
+        
+        <!-- 默认执行的拦截器栈 -->
+        <default-interceptor-ref name="HelloInterceptor"></default-interceptor-ref>
+        
+        <action name="page" class="com.cn.bonc.controller.Action" method="Test">
+            <result name="success">/WEB-INF/pages/hello.jsp</result>
+        </action>
+        
+    </package>  
+    
+    
+</struts> 
