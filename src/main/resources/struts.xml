@@ -15,12 +15,12 @@
         <!-- 注册（定义）拦截器    (要使用还需要调用action)-->
         <interceptors>
            <interceptor name="SDKInterceptor"  class="com.cn.bonc.common.EPMStrutsInterceptor"></interceptor>
-           
+
            <interceptor-stack name="HelloInterceptor">
              <interceptor-ref name="defaultStack"></interceptor-ref>
              <interceptor-ref name="SDKInterceptor"></interceptor-ref>
            </interceptor-stack>
-           
+
         </interceptors>
         
         <!-- 默认执行的拦截器栈 -->
